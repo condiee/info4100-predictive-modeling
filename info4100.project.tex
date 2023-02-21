@@ -1,0 +1,1940 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Group Project: Early Alert with LMS Data},
+  pdfauthor={{[}{[}Jacob Bee Ho Brown (jdb393), Emma Condie (erc97), Ellie Garell (emg223), Sanithia Edwards (se273), Yue Ji (yj359), Julia Lehman (jsl357), Heitung Sun (hs835){]}{]}},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Group Project: Early Alert with LMS Data}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{INFO 4100 Learning Analytics}
+\author{{[}{[}Jacob Bee Ho Brown (jdb393), Emma Condie (erc97), Ellie Garell
+(emg223), Sanithia Edwards (se273), Yue Ji (yj359), Julia Lehman
+(jsl357), Heitung Sun (hs835){]}{]}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\textbf{Goals:} The goal of this project is to learn how to work with
+raw Learning Management System (LMS) data and apply some of the
+prediction skills you have learned so far. You will develop a one-day
+early warning system for students who miss a graded submission. I am
+sharing with you an export of the class's edX log data thus far. I have
+anonymized the dataset and performed minimal data cleaning, leaving
+plenty of real-world messiness for you to tackle here. As always, you
+should start by getting to know the datasets. In this case, you should
+be able to really understand what is going on because it is YOUR data.
+In fact, you can navigate to the relevant pages on edX to see what
+page/action the data refers to.
+
+\textbf{Group Project:} This is a group project and I expect you to work
+as a team to come up with the best possible prediction accuracy. Your
+team will submit one common solution (note that EACH team member will
+need to submit the knitted Word doc on edx to get credit like with the
+first group project).
+
+\textbf{Try Your Best:} All members of the TWO teams that achieve the
+highest F1 scores will receive an extra credit point, and their
+solutions will be featured. To be eligible, your prediction problem
+needs to be set up correctly (i.e.~everything else needs to be correct).
+
+\hypertarget{step-1-understand-the-data}{%
+\section{Step 1: Understand the data}\label{step-1-understand-the-data}}
+
+There are three datasets which can be connected using the hash\_id
+column (a hashed version of the user id) and I am giving you links to
+the official documentation which you should read to understand the data
+better:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Clickstream data (1 row per student per action):
+  \href{https://edx.readthedocs.io/projects/devdata/en/stable/internal_data_formats/tracking_logs.html\#tracking-logs}{click
+  for documentation}
+\item
+  Module States (1 row per student per accessed content): original name
+  \href{https://edx.readthedocs.io/projects/devdata/en/stable/internal_data_formats/sql_schema.html\#courseware-studentmodule}{courseware-studentmodule
+  (click for doumentation)}
+\item
+  Assessment grades (1 row per assessment per student)
+\end{enumerate}
+
+I have already converted date-time objects into a numeric
+\texttt{timestamp} for you.
+
+To look up what pages URLs refer to (works for browser events, not
+server events), you can paste the URL into your browser. This should
+work for most URLs. I recommend doing this to be able to engineer more
+meaningful features.
+
+\emph{Question 1:} In the space below, explore each dataset using
+\texttt{head()}, \texttt{n\_distinct(data\$some\_id)},
+\texttt{summary()}, \texttt{table(data\$column)}. You can also plot the
+distribution of variables with histograms or boxplots. Check out the
+data documentation linked above to understand the meaning of each
+column.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{############################################### }
+\CommentTok{###### }\RegionMarkerTok{BEGIN}\CommentTok{ INPUT: Explore each dataset ###### }
+\CommentTok{###############################################}
+
+\CommentTok{# Exploring Clickstreams}
+\KeywordTok{head}\NormalTok{(cl)}
+\KeywordTok{n_distinct}\NormalTok{(cl}\OperatorTok{$}\NormalTok{hash_id)}
+\KeywordTok{n_distinct}\NormalTok{(cl}\OperatorTok{$}\NormalTok{survey_id)}
+\KeywordTok{n_distinct}\NormalTok{(cl}\OperatorTok{$}\NormalTok{time)}
+\KeywordTok{n_distinct}\NormalTok{(cl}\OperatorTok{$}\NormalTok{name)}
+\KeywordTok{n_distinct}\NormalTok{(cl}\OperatorTok{$}\NormalTok{event_type)}
+\KeywordTok{n_distinct}\NormalTok{(cl}\OperatorTok{$}\NormalTok{referer)}
+\KeywordTok{n_distinct}\NormalTok{(cl}\OperatorTok{$}\NormalTok{page)}
+\KeywordTok{n_distinct}\NormalTok{(cl}\OperatorTok{$}\NormalTok{event_source)}
+\KeywordTok{n_distinct}\NormalTok{(cl}\OperatorTok{$}\NormalTok{event)}
+\KeywordTok{n_distinct}\NormalTok{(cl}\OperatorTok{$}\NormalTok{timestamp)}
+\CommentTok{#summary(cl)}
+\KeywordTok{table}\NormalTok{(cl}\OperatorTok{$}\NormalTok{hash_id)}
+\CommentTok{#table(cl$survey_id)}
+\CommentTok{#table(cl$time)}
+\KeywordTok{table}\NormalTok{(cl}\OperatorTok{$}\NormalTok{name)}
+\KeywordTok{table}\NormalTok{(cl}\OperatorTok{$}\NormalTok{event_type)}
+\KeywordTok{table}\NormalTok{(cl}\OperatorTok{$}\NormalTok{referer)}
+\KeywordTok{table}\NormalTok{(cl}\OperatorTok{$}\NormalTok{page)}
+\KeywordTok{table}\NormalTok{(cl}\OperatorTok{$}\NormalTok{event_source)}
+\NormalTok{cl}\OperatorTok{$}\NormalTok{event}
+\KeywordTok{table}\NormalTok{(cl}\OperatorTok{$}\NormalTok{timestamp)}
+
+\CommentTok{# Exploring Module States}
+\KeywordTok{head}\NormalTok{(m)}
+\KeywordTok{n_distinct}\NormalTok{(m}\OperatorTok{$}\NormalTok{hash_id)}
+\KeywordTok{n_distinct}\NormalTok{(m}\OperatorTok{$}\NormalTok{module_type)}
+\KeywordTok{n_distinct}\NormalTok{(m}\OperatorTok{$}\NormalTok{grade)}
+\KeywordTok{n_distinct}\NormalTok{(m}\OperatorTok{$}\NormalTok{created)}
+\KeywordTok{n_distinct}\NormalTok{(m}\OperatorTok{$}\NormalTok{modified)}
+\KeywordTok{n_distinct}\NormalTok{(m}\OperatorTok{$}\NormalTok{max_grade)}
+\KeywordTok{n_distinct}\NormalTok{(m}\OperatorTok{$}\NormalTok{module_id)}
+\KeywordTok{n_distinct}\NormalTok{(m}\OperatorTok{$}\NormalTok{created_timestamp)}
+\KeywordTok{n_distinct}\NormalTok{(m}\OperatorTok{$}\NormalTok{modified_timestamp)}
+\CommentTok{#summary(m)}
+\CommentTok{#table(cl$hash_id)}
+\KeywordTok{table}\NormalTok{(m}\OperatorTok{$}\NormalTok{module_type)}
+\KeywordTok{table}\NormalTok{(m}\OperatorTok{$}\NormalTok{grade)}
+\KeywordTok{table}\NormalTok{(m}\OperatorTok{$}\NormalTok{created)}
+\KeywordTok{table}\NormalTok{(m}\OperatorTok{$}\NormalTok{modified)}
+\KeywordTok{table}\NormalTok{(m}\OperatorTok{$}\NormalTok{max_grade)}
+\KeywordTok{table}\NormalTok{(m}\OperatorTok{$}\NormalTok{module_id)}
+\KeywordTok{table}\NormalTok{(m}\OperatorTok{$}\NormalTok{created_timestamp)}
+\KeywordTok{table}\NormalTok{(m}\OperatorTok{$}\NormalTok{modified_timestamp)}
+
+\CommentTok{# Exploring Assessment grades}
+\CommentTok{# add code here}
+\KeywordTok{head}\NormalTok{(a)}
+\KeywordTok{n_distinct}\NormalTok{(a}\OperatorTok{$}\NormalTok{hash_id)}
+\KeywordTok{n_distinct}\NormalTok{(a}\OperatorTok{$}\NormalTok{usage_key)}
+\KeywordTok{n_distinct}\NormalTok{(a}\OperatorTok{$}\NormalTok{earned_graded)}
+\KeywordTok{n_distinct}\NormalTok{(a}\OperatorTok{$}\NormalTok{first_attempted)}
+\KeywordTok{n_distinct}\NormalTok{(a}\OperatorTok{$}\NormalTok{created)}
+\KeywordTok{n_distinct}\NormalTok{(a}\OperatorTok{$}\NormalTok{created_timestamp)}
+\KeywordTok{n_distinct}\NormalTok{(a}\OperatorTok{$}\NormalTok{modified_timestamp)}
+\KeywordTok{n_distinct}\NormalTok{(a}\OperatorTok{$}\NormalTok{first_attempted_timestamp)}
+\CommentTok{#summary(a)}
+\CommentTok{#table(a$hash_id)}
+\CommentTok{#table(a$usage_key)}
+\KeywordTok{table}\NormalTok{(a}\OperatorTok{$}\NormalTok{earned_graded)}
+\KeywordTok{table}\NormalTok{(a}\OperatorTok{$}\NormalTok{first_attempted)}
+\KeywordTok{table}\NormalTok{(a}\OperatorTok{$}\NormalTok{created)}
+\KeywordTok{table}\NormalTok{(a}\OperatorTok{$}\NormalTok{created_timestamp)}
+\KeywordTok{table}\NormalTok{(a}\OperatorTok{$}\NormalTok{modified_timestamp)}
+\KeywordTok{table}\NormalTok{(a}\OperatorTok{$}\NormalTok{first_attempted_timestamp)}
+
+\CommentTok{###############################################}
+\CommentTok{###############################################}
+\end{Highlighting}
+\end{Shaded}
+
+You may notice that it would be helpful to combine the information about
+grades and time of first attempt with the module state data. Below I
+make this join for you. See that only `sequential' modules have grade
+data associated with them. The boxplot shows when the different
+sequentials (containing problems) were attempted. This gives you an idea
+of the order of problems in the course.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ma =}\StringTok{ }\NormalTok{m }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(}
+\NormalTok{    a }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(hash_id}\OperatorTok{:}\NormalTok{possible_graded, first_attempted_timestamp), }
+    \DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"hash_id"}\NormalTok{=}\StringTok{"hash_id"}\NormalTok{, }\StringTok{"module_id"}\NormalTok{=}\StringTok{"usage_key"}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{# Only sequential modules have a grade associated with them}
+\KeywordTok{table}\NormalTok{(ma}\OperatorTok{$}\NormalTok{module_type, ma}\OperatorTok{$}\NormalTok{first_attempted_timestamp}\OperatorTok{>}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 
+##                  TRUE
+##   chapter           0
+##   course            0
+##   openassessment    0
+##   problem           0
+##   sequential     1163
+##   video             0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# We see that assignments were due (submitted) at different times}
+\KeywordTok{boxplot}\NormalTok{(ma}\OperatorTok{$}\NormalTok{first_attempted_timestamp }\OperatorTok{~}\StringTok{ }\NormalTok{ma}\OperatorTok{$}\NormalTok{module_id)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{info4100.project_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\hypertarget{step-2-define-a-prediction-task}{%
+\section{Step 2: Define a prediction
+task}\label{step-2-define-a-prediction-task}}
+
+Recall the guidelines for defining a good prediction problem covered in
+the Handbook chapter on prediction. You are looking for something
+actionable (an opportunity to intervene) and a situation that repeats
+(so the prediction can be useful in the future). The tradeoff with the
+dataset you have here is that on the one hand it is very relevant to you
+but on the other hand it is relatively small. Still, the data is
+fine-grained and sufficiently messy to give you a taste of LMS data
+analysis.
+
+The prediction problem for this project is to build a one-day early
+warning system for missing a graded submission. Specifically,
+\textbf{your goal is to predict one day before the submission deadline,
+if a student will forget to submit an assignment}, so that the system
+can send a reminder. As you may have noticed during the data exploration
+phase above (if not, you should go back and examine this), there are
+several graded submissions and some students missed one or more of them.
+We define \textbf{missing a submission} as having an NA for
+\texttt{first\_attempted\_timestamp} but of course only for those that
+are past due.
+
+\hypertarget{instructions}{%
+\subsubsection{Instructions}\label{instructions}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Treat each graded assignment as a prediction task (thus there are x*n
+  prediction opportunities where x = number of graded assignments and n
+  = 31 students).
+\item
+  Create a dataset that has 1 row per student per graded assessment with
+  the binary outcome (did they MISS it? yes/no) and several predictors
+  (see next tip)
+\item
+  Predictors (i.e.~features) need to be engineered with data from
+  \textbf{24hrs before each assignment is due}, which of course varies
+  across assignments; that means you have much more information to
+  predict later assignments than earlier ones
+\item
+  Once your dataset is ready, split it into a training and a test set
+\item
+  Train a prediction model on the training data; you can try out any of
+  the ones we have covered in the prediction homework and Random Forest
+\item
+  Keep tuning your model choice, model parameters (if any), and feature
+  engineering
+\item
+  Finally, test your prediction accuracy on the test set
+\end{enumerate}
+
+\hypertarget{step-3-getting-you-started}{%
+\section{Step 3: Getting you started}\label{step-3-getting-you-started}}
+
+\hypertarget{create-the-outcome-variable}{%
+\subsection{Create the outcome
+variable}\label{create-the-outcome-variable}}
+
+\textbf{Identify the graded assessments and whether a student did NOT
+submit}. Recall we want to have a \emph{warning} system, so the outcome
+should be the negative action.
+
+Get the outcome for each graded assignment. Figure out the deadline for
+each and compute the timestamp for 24hrs prior to the deadline. You
+probably want to use the \texttt{ma} dataset I created for you above.
+
+The following table helps you see the various graded assignments to
+consider. We keep only those where possible\_graded \textgreater{} 0.
+\textbf{I define the deadline as the 90th percentile of submissions (you
+may use this simplification).}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ma }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{(possible_graded }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(module_id) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{summarise}\NormalTok{(}
+        \DataTypeTok{deadline =} \KeywordTok{quantile}\NormalTok{(first_attempted_timestamp, }\DataTypeTok{probs =} \FloatTok{.9}\NormalTok{, }\DataTypeTok{na.rm=}\NormalTok{T),}
+        \DataTypeTok{p_unsubmitted =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(first_attempted_timestamp))}
+\NormalTok{    ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{arrange}\NormalTok{(deadline)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 17 x 3
+##    module_id                                              deadline p_unsubmitted
+##    <chr>                                                     <dbl>         <dbl>
+##  1 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0638
+##  2 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0215
+##  3 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0753
+##  4 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0     
+##  5 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0526
+##  6 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0211
+##  7 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0957
+##  8 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0426
+##  9 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0753
+## 10 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0737
+## 11 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0326
+## 12 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0761
+## 13 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0426
+## 14 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.571 
+## 15 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.909 
+## 16 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~   NA             1     
+## 17 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~   NA             1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ma }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{((possible_graded }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{) }\OperatorTok{&}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(first_attempted_timestamp))) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(module_id) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{summarise}\NormalTok{(}
+        \DataTypeTok{deadline =} \KeywordTok{quantile}\NormalTok{(first_attempted_timestamp, }\DataTypeTok{probs =} \FloatTok{.9}\NormalTok{, }\DataTypeTok{na.rm=}\NormalTok{T),}
+        \DataTypeTok{p_unsubmitted =} \KeywordTok{sum}\NormalTok{(first_attempted_timestamp}\OperatorTok{<}\NormalTok{deadline}\DecValTok{-60} \OperatorTok{*}\StringTok{ }\DecValTok{60} \OperatorTok{*}\StringTok{ }\DecValTok{24}\NormalTok{)}\OperatorTok{/}\KeywordTok{n}\NormalTok{()}
+\NormalTok{    ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{arrange}\NormalTok{(deadline)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 15 x 3
+##    module_id                                              deadline p_unsubmitted
+##    <chr>                                                     <dbl>         <dbl>
+##  1 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.841
+##  2 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.725
+##  3 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.709
+##  4 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.716
+##  5 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.656
+##  6 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.656
+##  7 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.682
+##  8 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.622
+##  9 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.593
+## 10 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.352
+## 11 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.607
+## 12 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.576
+## 13 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0.644
+## 14 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0    
+## 15 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9         0
+\end{verbatim}
+
+Now you know which assessments (module\_ids) to target. \textbf{Be sure
+to kick out the one with p\_unsubmitted \textgreater{} 0.5}; They were
+not due yet when the export was created.
+
+\emph{Question 2:} Now build a dataset with an indicator for each person
+and each of these module\_ids with 1=unsubmitted, 0=submitted. Keep
+track of the deadline: you only want to use features based on data up to
+24hrs before it (i.e.~\texttt{24\ *\ 60\ *\ 60} seconds).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{############################################### }
+\CommentTok{####### }\RegionMarkerTok{BEGIN}\CommentTok{ INPUT: Define outcome ###########}
+\CommentTok{###############################################}
+
+\CommentTok{# edit ma to include a column with the module deadline}
+\CommentTok{# and a binary column for the probability for whether the student submits on time}
+\NormalTok{ma_edited =}\StringTok{ }\NormalTok{ma }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{(possible_graded }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(module_id) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{summarise}\NormalTok{(}
+        \DataTypeTok{deadline =} \KeywordTok{quantile}\NormalTok{(first_attempted_timestamp, }\DataTypeTok{probs =} \FloatTok{.9}\NormalTok{, }\DataTypeTok{na.rm=}\NormalTok{T),}
+        \DataTypeTok{p_unsubmitted =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(first_attempted_timestamp))}
+\NormalTok{    ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{arrange}\NormalTok{(deadline) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{(p_unsubmitted }\OperatorTok{<=}\FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(ma_edited)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 13 x 3
+##    module_id                                              deadline p_unsubmitted
+##    <chr>                                                     <dbl>         <dbl>
+##  1 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0638
+##  2 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0215
+##  3 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0753
+##  4 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0     
+##  5 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0526
+##  6 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0211
+##  7 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0957
+##  8 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0426
+##  9 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0753
+## 10 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0737
+## 11 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0326
+## 12 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0761
+## 13 block-v1:Cornellx+INFO4100+Fall2020+type@sequential+~    1.60e9        0.0426
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# combine these new columns with ma }
+\NormalTok{ma_combined =}\StringTok{ }\NormalTok{ma }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(}
+\NormalTok{    ma_edited }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(module_id}\OperatorTok{:}\NormalTok{deadline,p_unsubmitted), }
+    \DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"module_id"}\NormalTok{=}\StringTok{"module_id"}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{# create outcome dataset}
+\NormalTok{outcome =}\StringTok{ }\NormalTok{ma_combined }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{((possible_graded }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)}\OperatorTok{&}\NormalTok{(p_unsubmitted }\OperatorTok{<=}\FloatTok{0.5}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(hash_id, module_id) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{summarise}\NormalTok{(}
+        \DataTypeTok{unsubmitted =}\NormalTok{ (}\KeywordTok{is.na}\NormalTok{(first_attempted_timestamp))}\OperatorTok{*}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` regrouping output by 'hash_id' (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# add deadline column from ma_edited}
+\NormalTok{outcome =}\StringTok{ }\NormalTok{outcome }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(}
+\NormalTok{    ma_edited }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(module_id}\OperatorTok{:}\NormalTok{deadline), }
+    \DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"module_id"}\NormalTok{=}\StringTok{"module_id"}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{outcome}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1,219 x 4
+## # Groups:   hash_id [95]
+##    hash_id            module_id                            unsubmitted  deadline
+##    <chr>              <chr>                                      <dbl>     <dbl>
+##  1 046b9f96c0155a63c~ block-v1:Cornellx+INFO4100+Fall2020~           0    1.60e9
+##  2 046b9f96c0155a63c~ block-v1:Cornellx+INFO4100+Fall2020~           0    1.60e9
+##  3 046b9f96c0155a63c~ block-v1:Cornellx+INFO4100+Fall2020~           0    1.60e9
+##  4 046b9f96c0155a63c~ block-v1:Cornellx+INFO4100+Fall2020~           0    1.60e9
+##  5 046b9f96c0155a63c~ block-v1:Cornellx+INFO4100+Fall2020~           0    1.60e9
+##  6 046b9f96c0155a63c~ block-v1:Cornellx+INFO4100+Fall2020~           0    1.60e9
+##  7 046b9f96c0155a63c~ block-v1:Cornellx+INFO4100+Fall2020~           0    1.60e9
+##  8 046b9f96c0155a63c~ block-v1:Cornellx+INFO4100+Fall2020~           0    1.60e9
+##  9 046b9f96c0155a63c~ block-v1:Cornellx+INFO4100+Fall2020~           0    1.60e9
+## 10 046b9f96c0155a63c~ block-v1:Cornellx+INFO4100+Fall2020~           0    1.60e9
+## # ... with 1,209 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{############################################### }
+\CommentTok{############################################### }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{feature-engineering}{%
+\subsection{Feature Engineering}\label{feature-engineering}}
+
+\textbf{For each graded assessment, identify what data is appropriate
+for feature engineering}
+
+Before you start feature engineering, you need to constrain the data for
+\textbf{each} assessment.
+
+Remember that the dataset we are aiming for has 1 row per person and
+assessment with several feature variables and one outcome variable. You
+created the outcome above. Now you need to create the appropriate
+features to join. I'm giving you an example for using
+\texttt{deadline\ =\ 1600304996} and creating 2 basic features from the
+clickstream. You should try to create a lot more features, including
+complex ones, that can use the clickstream or other datasets (but
+remember the timing constraint).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# PROF CODE EXAMPLE FEATURE}
+\NormalTok{secs_day =}\StringTok{ }\DecValTok{60} \OperatorTok{*}\StringTok{ }\DecValTok{60} \OperatorTok{*}\StringTok{ }\DecValTok{24}
+\NormalTok{example_deadline =}\StringTok{ }\DecValTok{1600304996}
+
+\NormalTok{example_features =}\StringTok{ }\NormalTok{cl }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{(timestamp }\OperatorTok{<}\StringTok{ }\NormalTok{example_deadline }\OperatorTok{-}\StringTok{ }\NormalTok{secs_day) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(hash_id) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{summarise}\NormalTok{(}
+        \DataTypeTok{num_events =} \KeywordTok{n}\NormalTok{(),}
+        \DataTypeTok{num_seq_goto =} \KeywordTok{sum}\NormalTok{(event_type}\OperatorTok{==}\StringTok{"seq_goto"}\NormalTok{)}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(example_features)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##   hash_id                          num_events num_seq_goto
+##   <chr>                                 <int>        <int>
+## 1 046b9f96c0155a63c1262c8bd0a327e0        287           10
+## 2 051123be58fb0985c3578ad867ec22e2        407            6
+## 3 06b0110dadf9c128fd7550a2cd8a2bd4        190            2
+## 4 08258abf7826f7c758ffe1ecfc468f17        695           27
+## 5 0ca99849369b2ed808ee3060afe52eb6        829           64
+## 6 0df790f3a775479a223f91ff3d888994        344            0
+\end{verbatim}
+
+\emph{Question 3:} Engineer features for each student and assessment,
+subject to the timing constraint.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{############################################### }
+\CommentTok{###### }\RegionMarkerTok{BEGIN}\CommentTok{ INPUT: Engineer features #########}
+\CommentTok{###############################################}
+
+\CommentTok{# want dataset with 1 row per person and assessment, with several feature variables, and 1 outcome variable}
+\NormalTok{features =}\StringTok{ }\NormalTok{outcome}
+\NormalTok{ma_features =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{()}
+\NormalTok{cl_features =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{()}
+\CommentTok{# for each graded assessment, select data to use for feature eng based on module ddl-1 day}
+\ControlFlowTok{for}\NormalTok{ (row }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(ma_edited)) }\CommentTok{#nrow(ma_edited)==13}
+\NormalTok{\{}
+\NormalTok{  module_ddl =}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(ma_edited[row,}\StringTok{"deadline"}\NormalTok{])}
+\NormalTok{  moduleid =}\StringTok{ }\KeywordTok{as.character}\NormalTok{(ma_edited[row,}\StringTok{"module_id"}\NormalTok{])}
+  \CommentTok{### modules that are available before ddl + 1 day, including the current module}
+  \CommentTok{#filter out assignments that weren't due yet and data from the window 24hours before the deadline}
+\NormalTok{  example_features =}\StringTok{ }\NormalTok{ma_combined }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\CommentTok{#filter((possible_graded >0 ) & (deadline <= module_ddl) & (first_attempted_timestamp < module_ddl - secs_day)) %>%}
+\StringTok{    }\KeywordTok{filter}\NormalTok{((possible_graded }\OperatorTok{>}\DecValTok{0}\NormalTok{ ) }\OperatorTok{&}\StringTok{ }\NormalTok{(deadline }\OperatorTok{<=}\StringTok{ }\NormalTok{module_ddl }\OperatorTok{-}\StringTok{ }\NormalTok{secs_day)) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(hash_id) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{summarise}\NormalTok{(}
+        \CommentTok{#add our features for assessments here!}
+        \CommentTok{#num_assignments = n(),}
+        \DataTypeTok{diff =} \KeywordTok{mean}\NormalTok{(deadline }\OperatorTok{+}\StringTok{ }\NormalTok{secs_day }\OperatorTok{-}\StringTok{ }\NormalTok{first_attempted_timestamp),}
+        \CommentTok{#miss_ddl = sum(is.na(first_attempted_timestamp)),}
+        \DataTypeTok{miss_ddl =} \KeywordTok{sum}\NormalTok{(deadline }\OperatorTok{-}\StringTok{ }\NormalTok{first_attempted_timestamp}\OperatorTok{<}\DecValTok{0}\NormalTok{),}
+        \CommentTok{#avg_miss_ddl = sum(deadline - first_attempted_timestamp<0)/n(),}
+        \DataTypeTok{avg_grade =} \KeywordTok{sum}\NormalTok{(earned_graded)}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(possible_graded),}
+        \CommentTok{#perf_score = sum(earned_graded==possible_graded),}
+        \DataTypeTok{avg_perf_score =} \KeywordTok{sum}\NormalTok{(earned_graded}\OperatorTok{==}\NormalTok{possible_graded)}\OperatorTok{/}\KeywordTok{n}\NormalTok{(),}
+        \CommentTok{#grade = earned_graded/possible_graded,}
+        \CommentTok{#time_between_modification = mean(modified_timestamp-created_timestamp),}
+        \CommentTok{# grade_above_avg = (earned_graded/possible_graded) > mean(earned_graded)/possible_graded,  # earned_graded/possible_graded) == mean(earned_graded)/possible_graded}
+        \CommentTok{#more_than_1_possible_point = sum(possible_graded>1.0),}
+        \CommentTok{#prev_attemp_last_hr = sum(first_attempted_timestamp > deadline - 3600), # not sure about this one}
+        \CommentTok{#submitted_latest = !is.na(first_attempted_timestamp)}
+\NormalTok{    )}
+  \CommentTok{#feature checking if students submitted aldready the current assignment one day before the calculated deadline}
+  
+\NormalTok{  problem =}\StringTok{ }\NormalTok{ma_combined }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{((module_type}\OperatorTok{==}\StringTok{"problem"}\NormalTok{) }\OperatorTok{&}\StringTok{ }\NormalTok{(modified_timestamp }\OperatorTok{<=}\StringTok{ }\NormalTok{module_ddl }\OperatorTok{-}\StringTok{ }\NormalTok{secs_day))}\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(hash_id) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{summarise}\NormalTok{(}
+      \CommentTok{#full_grade = sum(grade==max_grade),}
+      \CommentTok{#time_spent = mean(modified_timestamp - created_timestamp)}
+\NormalTok{    )}
+\NormalTok{  video_info =}\StringTok{ }\NormalTok{ma_combined }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{((module_type}\OperatorTok{==}\StringTok{"video"}\NormalTok{) }\OperatorTok{&}\StringTok{ }\NormalTok{(modified_timestamp  }\OperatorTok{<=}\StringTok{ }\NormalTok{(module_ddl }\OperatorTok{-}\StringTok{ }\NormalTok{secs_day))) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(hash_id) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{summarise}\NormalTok{(}
+        \CommentTok{#num_videos = n(),}
+        \CommentTok{#time_on_videos = sum(modified_timestamp-created_timestamp),}
+        \CommentTok{#time_per_video_avg = (sum(modified_timestamp-created_timestamp))/n()}
+\NormalTok{    )}
+  \CommentTok{#video_info}
+\NormalTok{  features_per_module =}\StringTok{ }\NormalTok{features[}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{4}\NormalTok{)] }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(module_id }\OperatorTok{==}\StringTok{ }\NormalTok{moduleid) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(}
+\NormalTok{    example_features, }
+    \DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"hash_id"}\NormalTok{=}\StringTok{"hash_id"}\NormalTok{)}
+\NormalTok{  )}
+  \CommentTok{# features_per_module = features_per_module %>% left_join(}
+  \CommentTok{#   video_info, }
+  \CommentTok{#   by = c("hash_id"="hash_id")}
+  \CommentTok{# )}
+  \CommentTok{# features_per_module = features_per_module %>% left_join(}
+  \CommentTok{#   problem, }
+  \CommentTok{#   by = c("hash_id"="hash_id")}
+  \CommentTok{# )}
+  
+\NormalTok{  submitted =}\StringTok{ }\NormalTok{ma_combined }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{((possible_graded }\OperatorTok{>}\DecValTok{0}\NormalTok{ ) }\OperatorTok{&}\StringTok{ }\NormalTok{(module_id }\OperatorTok{==}\StringTok{ }\NormalTok{moduleid)) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(hash_id) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{summarise}\NormalTok{(}
+        \CommentTok{#add our features for assessments here!}
+        \CommentTok{#num_assignments = n(),}
+        \CommentTok{#diff = mean(deadline + secs_day - first_attempted_timestamp),}
+        \DataTypeTok{not_submitted_by_ddl =}\NormalTok{ (}\OperatorTok{!}\NormalTok{(first_attempted_timestamp }\OperatorTok{<}\StringTok{ }\NormalTok{module_ddl }\OperatorTok{-}\StringTok{ }\NormalTok{secs_day))}\OperatorTok{*}\DecValTok{1}\NormalTok{,}
+        \CommentTok{#miss_ddl = sum(deadline - first_attempted_timestamp<0),}
+        \CommentTok{#avg_miss_ddl = sum(deadline - first_attempted_timestamp<0)/n(),}
+        \CommentTok{#avg_grade = sum(earned_graded)/sum(possible_graded),}
+        \CommentTok{#perf_score = sum(earned_graded==possible_graded),}
+        \CommentTok{#avg_perf_score = sum(earned_graded==possible_graded)/n(),}
+        \CommentTok{#grade = earned_graded/possible_graded,}
+        \CommentTok{#time_between_modification = mean(modified_timestamp-created_timestamp),}
+        \CommentTok{# grade_above_avg = (earned_graded/possible_graded) > mean(earned_graded)/possible_graded,  # earned_graded/possible_graded) == mean(earned_graded)/possible_graded}
+        \CommentTok{#more_than_1_possible_point = sum(possible_graded>1.0),}
+       \CommentTok{#  prev_attemp_last_hr = sum(first_attempted_timestamp > deadline - 3600), # not sure about this one}
+\NormalTok{    )}
+  \KeywordTok{print}\NormalTok{(submitted)}
+\NormalTok{  features_per_module =}\StringTok{ }\NormalTok{features_per_module }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(}
+\NormalTok{    submitted,}
+    \DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"hash_id"}\NormalTok{=}\StringTok{"hash_id"}\NormalTok{)}
+\NormalTok{  )}
+  
+\NormalTok{  ma_features =}\StringTok{ }\KeywordTok{rbind}\NormalTok{(ma_features, features_per_module)}
+  
+  
+\NormalTok{  cl_features_before_module_ddl =}\StringTok{ }\NormalTok{cl }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{(timestamp }\OperatorTok{<}\StringTok{ }\NormalTok{module_ddl }\OperatorTok{-}\StringTok{ }\NormalTok{secs_day) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(hash_id) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{summarise}\NormalTok{(}
+      \CommentTok{# add our features for clickstream data here!}
+        \DataTypeTok{num_events =} \KeywordTok{log2}\NormalTok{(}\KeywordTok{n}\NormalTok{()),}
+        \CommentTok{#num_seq_goto = sum(event_type=="seq_goto"),}
+        \CommentTok{#num_module = sum(str_detect(page,moduleid)),}
+        \CommentTok{#pause_play_video = sum(event_type=="play_video"),}
+        \CommentTok{#num_pause_video = sum(event_type=="pause_video"),}
+        \DataTypeTok{num_video_interactions =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{str_detect}\NormalTok{(event_type, }\StringTok{"video"}\NormalTok{)),}
+        \CommentTok{#num_prob_check = sum(event_type=="problem_check"),}
+        \CommentTok{#num_show_ans = sum(event_type=="showanswer"),}
+        \DataTypeTok{num_links_clicked =} \KeywordTok{sum}\NormalTok{(name}\OperatorTok{==}\StringTok{"edx.ui.lms.link_clicked"}\NormalTok{),}
+        \CommentTok{#num_ref_from_mail = sum(str_detect(referer, "mail")),}
+        \CommentTok{#time_spent = mean(diff(timestamp)),}
+        \DataTypeTok{num_events_past_week =} \KeywordTok{sum}\NormalTok{(timestamp }\OperatorTok{>}\StringTok{ }\NormalTok{module_ddl }\OperatorTok{-}\StringTok{ }\NormalTok{secs_day}\OperatorTok{*}\DecValTok{7}\NormalTok{),}
+        \DataTypeTok{num_events_past_three_day=} \KeywordTok{sum}\NormalTok{(timestamp }\OperatorTok{>}\StringTok{ }\NormalTok{module_ddl }\OperatorTok{-}\StringTok{ }\NormalTok{secs_day}\OperatorTok{*}\DecValTok{4}\NormalTok{),}
+        \DataTypeTok{num_events_past_day =} \KeywordTok{sum}\NormalTok{(timestamp }\OperatorTok{>}\StringTok{ }\NormalTok{module_ddl }\OperatorTok{-}\StringTok{ }\NormalTok{secs_day}\OperatorTok{*}\DecValTok{2}\NormalTok{),}
+        \CommentTok{# add more event types (follow URL to figure out what they are)}
+        \CommentTok{# use page}
+        \CommentTok{# use name}
+\NormalTok{    )}
+  \CommentTok{#print(cl_features_before_module_ddl)}
+\NormalTok{  cl_features_per_module =}\StringTok{ }\NormalTok{features[}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{4}\NormalTok{)] }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(module_id }\OperatorTok{==}\StringTok{ }\NormalTok{moduleid) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(}
+\NormalTok{    cl_features_before_module_ddl, }
+    \DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"hash_id"}\NormalTok{=}\StringTok{"hash_id"}\NormalTok{)}
+\NormalTok{  )}
+  \CommentTok{#print(features_per_module)}
+\NormalTok{  cl_features =}\StringTok{ }\KeywordTok{rbind}\NormalTok{(cl_features, cl_features_per_module)}
+\NormalTok{\}  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 94 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    0
+##  2 051123be58fb0985c3578ad867ec22e2                    0
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    0
+##  4 08258abf7826f7c758ffe1ecfc468f17                    0
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                   NA
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                   NA
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 84 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 93 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    0
+##  2 051123be58fb0985c3578ad867ec22e2                    0
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    0
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                    1
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    1
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 83 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 93 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    0
+##  2 051123be58fb0985c3578ad867ec22e2                    0
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    0
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                   NA
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                   NA
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 83 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 95 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    1
+##  2 051123be58fb0985c3578ad867ec22e2                    0
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    0
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                    1
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    0
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 85 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 95 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    1
+##  2 051123be58fb0985c3578ad867ec22e2                    0
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    0
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                    1
+##  7 0e951c83667194cc73f4610350b72945                   NA
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    0
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 85 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 95 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    1
+##  2 051123be58fb0985c3578ad867ec22e2                    1
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    0
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                    0
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    1
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 85 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 94 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    0
+##  2 051123be58fb0985c3578ad867ec22e2                    0
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    0
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                    1
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    0
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 84 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 94 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    1
+##  2 051123be58fb0985c3578ad867ec22e2                    1
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    1
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                    0
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    1
+##  9 1403b390b640882382a0bb37983933fe                    1
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 84 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 93 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    1
+##  2 051123be58fb0985c3578ad867ec22e2                    1
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    1
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                    0
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    1
+##  9 1403b390b640882382a0bb37983933fe                   NA
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 83 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 95 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    1
+##  2 051123be58fb0985c3578ad867ec22e2                    0
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    1
+##  5 0ca99849369b2ed808ee3060afe52eb6                    1
+##  6 0df790f3a775479a223f91ff3d888994                   NA
+##  7 0e951c83667194cc73f4610350b72945                    1
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    1
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                   NA
+## # ... with 85 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 92 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    1
+##  2 051123be58fb0985c3578ad867ec22e2                    1
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    1
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                    1
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    1
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 82 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 92 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    1
+##  2 051123be58fb0985c3578ad867ec22e2                    1
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                   NA
+##  4 08258abf7826f7c758ffe1ecfc468f17                    1
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                    1
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    1
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 82 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 94 x 2
+##    hash_id                          not_submitted_by_ddl
+##    <chr>                                           <dbl>
+##  1 046b9f96c0155a63c1262c8bd0a327e0                    1
+##  2 051123be58fb0985c3578ad867ec22e2                    1
+##  3 06b0110dadf9c128fd7550a2cd8a2bd4                    1
+##  4 08258abf7826f7c758ffe1ecfc468f17                    0
+##  5 0ca99849369b2ed808ee3060afe52eb6                    0
+##  6 0df790f3a775479a223f91ff3d888994                    0
+##  7 0e951c83667194cc73f4610350b72945                    0
+##  8 0fefde5cc3b1c65dba071888ce9e522e                    0
+##  9 1403b390b640882382a0bb37983933fe                    0
+## 10 14809cc5e83174cc0cb9d414bbb4fc9f                    0
+## # ... with 84 more rows
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#print(cl_features)}
+
+\CommentTok{# how do we save each set of features for each module into one dataset? }
+\CommentTok{#print(ma_features)}
+\NormalTok{all_features =}\StringTok{ }\KeywordTok{left_join}\NormalTok{(ma_features, cl_features, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"hash_id"}\NormalTok{=}\StringTok{"hash_id"}\NormalTok{, }\StringTok{"module_id"}\NormalTok{=}\StringTok{"module_id"}\NormalTok{))}
+\NormalTok{all_features}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1,219 x 13
+## # Groups:   hash_id [95]
+##    hash_id module_id  diff miss_ddl avg_grade avg_perf_score not_submitted_b~
+##    <chr>   <chr>     <dbl>    <int>     <dbl>          <dbl>            <dbl>
+##  1 046b9f~ block-v1~    NA       NA        NA             NA                0
+##  2 051123~ block-v1~    NA       NA        NA             NA                0
+##  3 06b011~ block-v1~    NA       NA        NA             NA                0
+##  4 08258a~ block-v1~    NA       NA        NA             NA                0
+##  5 0ca998~ block-v1~    NA       NA        NA             NA                0
+##  6 0df790~ block-v1~    NA       NA        NA             NA               NA
+##  7 0e951c~ block-v1~    NA       NA        NA             NA                0
+##  8 0fefde~ block-v1~    NA       NA        NA             NA               NA
+##  9 1403b3~ block-v1~    NA       NA        NA             NA                0
+## 10 14809c~ block-v1~    NA       NA        NA             NA                0
+## # ... with 1,209 more rows, and 6 more variables: num_events <dbl>,
+## #   num_video_interactions <int>, num_links_clicked <int>,
+## #   num_events_past_week <int>, num_events_past_three_day <int>,
+## #   num_events_past_day <int>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{###############################################}
+\CommentTok{###############################################}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-4-split-your-dataset}{%
+\section{Step 4: Split your dataset}\label{step-4-split-your-dataset}}
+
+\emph{Question 4:} We would like train the model on earlier assessments
+in order to make early alert predictions for later ones. As the hold-out
+test set, designate the four (4) last assessments (i.e.~with the 4
+latest computed deadlines, or the last 4 periods; same thing). You will
+use all the remaining data to train. Note that this may not be the best
+setup for all applications (e.g.~if we wanted to use the model at the
+start of the course next year, but it is a reasonable approach if we
+wanted to use the model for the rest of this course offering). Identify
+the module\_ids of the last four assignments, put data associated with
+their periods in the \texttt{test} dataset. Take all the remaining data
+(earlier periods excl the last 4) and put it in the \texttt{train}
+dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{############################################### }
+\CommentTok{######## }\RegionMarkerTok{BEGIN}\CommentTok{ INPUT: Split dataset ###########}
+\CommentTok{###############################################}
+
+\CommentTok{# Identify last 4 periods for testing}
+\CommentTok{# add code here}
+\NormalTok{all_features =}\StringTok{ }\KeywordTok{left_join}\NormalTok{(ma_features, cl_features, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"hash_id"}\NormalTok{=}\StringTok{"hash_id"}\NormalTok{, }\StringTok{"module_id"}\NormalTok{=}\StringTok{"module_id"}\NormalTok{))}
+\NormalTok{all_features =}\StringTok{ }\KeywordTok{left_join}\NormalTok{(all_features, outcome, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"hash_id"}\NormalTok{=}\StringTok{"hash_id"}\NormalTok{, }\StringTok{"module_id"}\NormalTok{=}\StringTok{"module_id"}\NormalTok{))}
+\KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(all_features[[}\StringTok{"unsubmitted"}\NormalTok{]])) }\CommentTok{#==0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(all_features[[}\StringTok{"miss_ddl"}\NormalTok{]])) }\CommentTok{# 96}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 307
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(all_features[[}\StringTok{"num_events"}\NormalTok{]])) }\CommentTok{# 11}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(all_features[[}\StringTok{"unsubmitted"}\NormalTok{]]}\OperatorTok{==}\DecValTok{1}\NormalTok{) }\CommentTok{#63}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 63
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#replace_na(1) will result in classification tree not working}
+\ControlFlowTok{for}\NormalTok{ (col }\ControlFlowTok{in} \KeywordTok{colnames}\NormalTok{(all_features))\{}
+  \CommentTok{#if (col=="miss_ddl" || col=="unsubmitted")\{}
+  \CommentTok{#  all_features[[col]] = all_features[[col]] %>% replace_na(1)}
+  \CommentTok{#\}}
+  \CommentTok{#else\{}
+\NormalTok{    all_features[[col]] =}\StringTok{ }\NormalTok{all_features[[col]] }\OperatorTok{%>%}\StringTok{ }\KeywordTok{replace_na}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+  \CommentTok{#\}}
+\NormalTok{\}}
+\CommentTok{#all_features =  all_features %>% drop_na()}
+\CommentTok{#all_features_dropped_na}
+\CommentTok{#all_features = all_features %>% dplyr::mutate(x = replace_na(diff, 0))}
+\CommentTok{#$diff = all_features$diff %>% replace_na(0)}
+\CommentTok{#all_features$avg_perf_score = all_features$avg_perf_score %>% replace_na(0)}
+\CommentTok{#all_features$num_events = all_features$num_events %>% replace_na(0)}
+\NormalTok{all_features}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1,219 x 15
+## # Groups:   hash_id [95]
+##    hash_id module_id  diff miss_ddl avg_grade avg_perf_score not_submitted_b~
+##    <chr>   <chr>     <dbl>    <dbl>     <dbl>          <dbl>            <dbl>
+##  1 046b9f~ block-v1~     0        0         0              0                0
+##  2 051123~ block-v1~     0        0         0              0                0
+##  3 06b011~ block-v1~     0        0         0              0                0
+##  4 08258a~ block-v1~     0        0         0              0                0
+##  5 0ca998~ block-v1~     0        0         0              0                0
+##  6 0df790~ block-v1~     0        0         0              0                0
+##  7 0e951c~ block-v1~     0        0         0              0                0
+##  8 0fefde~ block-v1~     0        0         0              0                0
+##  9 1403b3~ block-v1~     0        0         0              0                0
+## 10 14809c~ block-v1~     0        0         0              0                0
+## # ... with 1,209 more rows, and 8 more variables: num_events <dbl>,
+## #   num_video_interactions <dbl>, num_links_clicked <dbl>,
+## #   num_events_past_week <dbl>, num_events_past_three_day <dbl>,
+## #   num_events_past_day <dbl>, unsubmitted <dbl>, deadline <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{last_four =}\StringTok{ }\NormalTok{ma_edited}\OperatorTok{$}\NormalTok{module_id[}\DecValTok{10}\OperatorTok{:}\DecValTok{13}\NormalTok{]}
+\CommentTok{#print(last_four)}
+
+\NormalTok{modelingTime =}\StringTok{ }\DecValTok{1602288653} \OperatorTok{+}\StringTok{ }\DecValTok{1000000}     
+\NormalTok{K =}\StringTok{ }\DecValTok{1000000}
+\NormalTok{T =}\StringTok{ }\DecValTok{1}\OperatorTok{/}\DecValTok{2}
+\CommentTok{#all_features$weight = K*exp(-(modelingTime - all_features$deadline)/T)}
+\NormalTok{all_features}\OperatorTok{$}\NormalTok{weight =}\StringTok{ }\DecValTok{1}\OperatorTok{/}\NormalTok{((modelingTime }\OperatorTok{-}\StringTok{ }\NormalTok{all_features}\OperatorTok{$}\NormalTok{deadline)}\OperatorTok{/}\NormalTok{K)}
+\CommentTok{# Split the dataset into train and test based on the module_ids or periods}
+\NormalTok{ test =}\StringTok{ }\NormalTok{all_features }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(module_id }\OperatorTok{%in%}\StringTok{ }\NormalTok{last_four)}
+ \KeywordTok{print}\NormalTok{(test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 373 x 16
+## # Groups:   hash_id [95]
+##    hash_id module_id    diff miss_ddl avg_grade avg_perf_score not_submitted_b~
+##    <chr>   <chr>       <dbl>    <dbl>     <dbl>          <dbl>            <dbl>
+##  1 046b9f~ block-v1~ 192892.        1     0.955          0.667                1
+##  2 051123~ block-v1~ 238216.        0     0.857          0.778                0
+##  3 06b011~ block-v1~  -3831.        5     0.904          0.556                1
+##  4 08258a~ block-v1~ 263935.        0     0.915          0.667                1
+##  5 0ca998~ block-v1~ 415542.        0     0.994          0.889                1
+##  6 0df790~ block-v1~      0         0     0.644          0.556                0
+##  7 0e951c~ block-v1~      0         0     0.960          0.778                1
+##  8 0fefde~ block-v1~      0         0     0.782          0.556                1
+##  9 1403b3~ block-v1~      0         0     0.915          0.556                0
+## 10 14809c~ block-v1~ 353794.        0     0.891          0.778                0
+## # ... with 363 more rows, and 9 more variables: num_events <dbl>,
+## #   num_video_interactions <dbl>, num_links_clicked <dbl>,
+## #   num_events_past_week <dbl>, num_events_past_three_day <dbl>,
+## #   num_events_past_day <dbl>, unsubmitted <dbl>, deadline <dbl>, weight <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ train =}\StringTok{ }\NormalTok{all_features }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\NormalTok{module_id }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(last_four,}\StringTok{"block-v1:Cornellx+INFO4100+Fall2020+type@sequential+block@bc80acbecf2d43f7b1d24704ff03fdf3"}\NormalTok{))}
+ \KeywordTok{print}\NormalTok{(train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 752 x 16
+## # Groups:   hash_id [95]
+##    hash_id module_id   diff miss_ddl avg_grade avg_perf_score not_submitted_b~
+##    <chr>   <chr>      <dbl>    <dbl>     <dbl>          <dbl>            <dbl>
+##  1 046b9f~ block-v1~ 3.67e5        0         1              1                0
+##  2 051123~ block-v1~ 3.61e5        0         1              1                0
+##  3 06b011~ block-v1~ 3.59e5        0         1              1                1
+##  4 08258a~ block-v1~ 3.58e5        0         1              1                0
+##  5 0ca998~ block-v1~ 3.63e5        0         1              1                0
+##  6 0df790~ block-v1~ 0.            0         0              0                1
+##  7 0e951c~ block-v1~ 2.41e5        0         1              1                0
+##  8 0fefde~ block-v1~ 0.            0         0              0                1
+##  9 1403b3~ block-v1~ 3.25e5        0         1              1                0
+## 10 14809c~ block-v1~ 3.68e5        0         1              1                0
+## # ... with 742 more rows, and 9 more variables: num_events <dbl>,
+## #   num_video_interactions <dbl>, num_links_clicked <dbl>,
+## #   num_events_past_week <dbl>, num_events_past_three_day <dbl>,
+## #   num_events_past_day <dbl>, unsubmitted <dbl>, deadline <dbl>, weight <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(all_features)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    hash_id           module_id              diff            miss_ddl     
+##  Length:1219        Length:1219        Min.   :-858902   Min.   :0.0000  
+##  Class :character   Class :character   1st Qu.:      0   1st Qu.:0.0000  
+##  Mode  :character   Mode  :character   Median : 235871   Median :0.0000  
+##                                        Mean   : 209399   Mean   :0.3314  
+##                                        3rd Qu.: 352805   3rd Qu.:0.0000  
+##                                        Max.   : 502947   Max.   :7.0000  
+##    avg_grade      avg_perf_score   not_submitted_by_ddl   num_events    
+##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000       Min.   : 0.000  
+##  1st Qu.:0.9144   1st Qu.:0.7143   1st Qu.:0.0000       1st Qu.: 8.234  
+##  Median :0.9796   Median :0.8571   Median :0.0000       Median : 9.236  
+##  Mean   :0.8523   Mean   :0.7777   Mean   :0.3363       Mean   : 8.851  
+##  3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.0000       3rd Qu.: 9.870  
+##  Max.   :1.0000   Max.   :1.0000   Max.   :1.0000       Max.   :11.185  
+##  num_video_interactions num_links_clicked num_events_past_week
+##  Min.   :  0.00         Min.   :  0.00    Min.   :   0.0      
+##  1st Qu.: 32.00         1st Qu.: 23.00    1st Qu.: 101.0      
+##  Median : 58.00         Median : 44.00    Median : 177.0      
+##  Mean   : 87.44         Mean   : 50.06    Mean   : 188.2      
+##  3rd Qu.:110.50         3rd Qu.: 69.00    3rd Qu.: 251.0      
+##  Max.   :771.00         Max.   :183.00    Max.   :1026.0      
+##  num_events_past_three_day num_events_past_day  unsubmitted     
+##  Min.   :  0.0             Min.   :  0.00      Min.   :0.00000  
+##  1st Qu.: 32.5             1st Qu.:  0.00      1st Qu.:0.00000  
+##  Median : 80.0             Median : 15.00      Median :0.00000  
+##  Mean   :100.6             Mean   : 35.57      Mean   :0.05168  
+##  3rd Qu.:150.0             3rd Qu.: 48.00      3rd Qu.:0.00000  
+##  Max.   :763.0             Max.   :698.00      Max.   :1.00000  
+##     deadline             weight      
+##  Min.   :1.599e+09   Min.   :0.2531  
+##  1st Qu.:1.600e+09   1st Qu.:0.3352  
+##  Median :1.601e+09   Median :0.4360  
+##  Mean   :1.601e+09   Mean   :0.5149  
+##  3rd Qu.:1.602e+09   3rd Qu.:0.6164  
+##  Max.   :1.602e+09   Max.   :1.0000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(all_features[}\OperatorTok{!}\StringTok{ }\NormalTok{(}\KeywordTok{names}\NormalTok{(all_features) }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"hash_id"}\NormalTok{,}\StringTok{"module_id"}\NormalTok{,}\StringTok{"deadline"}\NormalTok{))])[,}\StringTok{"unsubmitted"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      diff                  miss_ddl                 avg_grade 
+##               -0.18346631                0.03308926               -0.14086105 
+##            avg_perf_score      not_submitted_by_ddl                num_events 
+##               -0.14933670               -0.16619158               -0.11003210 
+##    num_video_interactions         num_links_clicked      num_events_past_week 
+##               -0.02873552               -0.05731649               -0.10713750 
+## num_events_past_three_day       num_events_past_day               unsubmitted 
+##               -0.07804353               -0.04961481                1.00000000 
+##                    weight 
+##                0.01401373
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{###############################################}
+\CommentTok{###############################################}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-5-train-your-models}{%
+\section{Step 5: Train your models}\label{step-5-train-your-models}}
+
+\emph{Question 5:} Train a prediction model and iterate on it. You
+should try out different algorithms that you have learned so far. You
+can go back and check your features and refine them to get better
+performance. To check how well you are doing, you should focus on your
+training data and compute the F1 score:
+\texttt{F1\ =\ 2/{[}(1/recall)+(1/precision){]}}. Report your F1 score
+on the training data below (don't forget this!).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{############################################### }
+\CommentTok{####### }\RegionMarkerTok{BEGIN}\CommentTok{ INPUT: Train and report #########}
+\CommentTok{###############################################}
+
+\CommentTok{# Fit  model to training data}
+\CommentTok{# add code here}
+\CommentTok{### logistic regression}
+\NormalTok{m_logreg =}\StringTok{ }\KeywordTok{glm}\NormalTok{(}\KeywordTok{as.factor}\NormalTok{(train}\OperatorTok{$}\NormalTok{unsubmitted) }\OperatorTok{~}\StringTok{ }\NormalTok{. }\OperatorTok{-}\StringTok{ }\NormalTok{hash_id }\OperatorTok{-}\StringTok{ }\NormalTok{module_id }\OperatorTok{-}\StringTok{ }\NormalTok{deadline }\OperatorTok{-}\StringTok{ }\NormalTok{weight, }\DataTypeTok{data =}\NormalTok{ train, }\DataTypeTok{family =} \StringTok{"binomial"}\NormalTok{)}
+\CommentTok{# the output are the coefficients:}
+\NormalTok{m_logreg}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:  glm(formula = as.factor(train$unsubmitted) ~ . - hash_id - module_id - 
+##     deadline - weight, family = "binomial", data = train)
+## 
+## Coefficients:
+##               (Intercept)                       diff  
+##                 1.007e+00                 -5.423e-06  
+##                  miss_ddl                  avg_grade  
+##                 2.615e-01                 -1.225e+00  
+##            avg_perf_score       not_submitted_by_ddl  
+##                -1.456e-01                 -1.982e+01  
+##                num_events     num_video_interactions  
+##                 4.336e-02                  4.619e-03  
+##         num_links_clicked       num_events_past_week  
+##                 4.689e-03                 -9.409e-03  
+## num_events_past_three_day        num_events_past_day  
+##                -1.692e-03                 -9.592e-03  
+## 
+## Degrees of Freedom: 751 Total (i.e. Null);  740 Residual
+## Null Deviance:       289.1 
+## Residual Deviance: 180.2     AIC: 204.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{### knn}
+\KeywordTok{library}\NormalTok{(class)}
+\CommentTok{#predictors = c("avg_perf_score","diff","num_events")}
+\CommentTok{#m_knn = knn(train = train[,predictors], test = train[,predictors], cl = train$unsubmitted, k = 3)}
+\NormalTok{m_knn =}\StringTok{ }\KeywordTok{knn}\NormalTok{(train[,}\DecValTok{3}\OperatorTok{:}\NormalTok{(}\KeywordTok{ncol}\NormalTok{(train)}\OperatorTok{-}\DecValTok{3}\NormalTok{)], train[,}\DecValTok{3}\OperatorTok{:}\NormalTok{(}\KeywordTok{ncol}\NormalTok{(train)}\OperatorTok{-}\DecValTok{3}\NormalTok{)], train}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{k =} \DecValTok{2}\NormalTok{)}
+\CommentTok{# the output are the predictions:}
+\CommentTok{#m_knn}
+
+\CommentTok{### classification tree}
+\KeywordTok{library}\NormalTok{(rpart)}
+\CommentTok{# = rpart(unsubmitted ~ avg_grade + more_than_1_possible_point + num_events + num_video_interactions + num_events_past_week + num_events_past_three_day + num_events_past_day, data = train, method = "class")}
+\NormalTok{m_class_tree =}\StringTok{ }\KeywordTok{rpart}\NormalTok{(unsubmitted }\OperatorTok{~}\StringTok{ }\NormalTok{diff}\OperatorTok{+}\StringTok{ }\NormalTok{miss_ddl }\OperatorTok{+}\StringTok{ }\NormalTok{avg_grade }\OperatorTok{+}\StringTok{ }\NormalTok{avg_perf_score }\OperatorTok{+}\NormalTok{num_events}\OperatorTok{+}\NormalTok{num_video_interactions}\OperatorTok{+}\StringTok{  }\NormalTok{not_submitted_by_ddl}\OperatorTok{+}\StringTok{ }\NormalTok{num_links_clicked }\OperatorTok{+}\StringTok{ }\NormalTok{num_events_past_week}\OperatorTok{+}\StringTok{ }\NormalTok{num_events_past_three_day }\OperatorTok{+}\StringTok{ }\NormalTok{num_events_past_day , }\DataTypeTok{data =}\NormalTok{ train, }\DataTypeTok{method =} \StringTok{"class"}\NormalTok{)}
+\CommentTok{#m_class_tree = rpart(unsubmitted ~ diff + miss_ddl + avg_grade + num_events + num_events_past_week, data = train, method = "class")}
+\CommentTok{#m_class_tree = rpart(unsubmitted ~ avg_perf_score + diff + num_events, data = train, method = "class")}
+\CommentTok{#m_class_tree = rpart(unsubmitted ~ . - hash_id - module_id - deadline - weight, data = train, method = "class")}
+\CommentTok{# the output are the decision trees}
+\CommentTok{#m_class_tree}
+
+\CommentTok{# you can even plot it!}
+\KeywordTok{plot}\NormalTok{(m_class_tree, }\DataTypeTok{uniform =}\NormalTok{ T)}
+\KeywordTok{text}\NormalTok{(m_class_tree, }\DataTypeTok{use.n =}\NormalTok{ F, }\DataTypeTok{all =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{cex =} \FloatTok{.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{info4100.project_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# prune the trees to avoid overfitting by limiting tree complexity}
+\CommentTok{#cp_class_tree = m_class_tree$cptable[which.min(m_class_tree$cptable[,"xerror"]),"CP"]}
+\CommentTok{#m_class_tree_pruned = prune(m_class_tree, cp = cp_class_tree)}
+
+
+\CommentTok{### naive bayes}
+
+\KeywordTok{library}\NormalTok{(e1071)}
+\CommentTok{#m_nb = naiveBayes(unsubmitted ~ diff + avg_perf_score + num_events, data = train)}
+\NormalTok{m_nb =}\StringTok{ }\KeywordTok{naiveBayes}\NormalTok{(}\KeywordTok{as.factor}\NormalTok{(unsubmitted) }\OperatorTok{~}\StringTok{ }\NormalTok{. }\OperatorTok{-}\StringTok{ }\NormalTok{hash_id }\OperatorTok{-}\StringTok{ }\NormalTok{module_id }\OperatorTok{-}\StringTok{ }\NormalTok{deadline }\OperatorTok{-}\StringTok{ }\NormalTok{weight, }\DataTypeTok{data =}\NormalTok{ train, }\DataTypeTok{method =} \StringTok{"class"}\NormalTok{)}
+\CommentTok{# the output are a-prior and conditional probabilities}
+\CommentTok{#m_nb}
+
+\CommentTok{# Make predictions on the test dataset}
+\CommentTok{# logreg: this returns the probability of dropout, so you can set Prob > 0.5 to mean Dropout}
+\NormalTok{p_logreg =}\StringTok{ }\KeywordTok{predict}\NormalTok{(m_logreg, }\DataTypeTok{newdata =}\NormalTok{ train, }\DataTypeTok{type =} \StringTok{"response"}\NormalTok{) }\OperatorTok{>}\StringTok{ }\FloatTok{0.5}
+\CommentTok{#p_logreg}
+\CommentTok{#}
+\CommentTok{# knn: this already has the prediction}
+\NormalTok{p_knn =}\StringTok{ }\NormalTok{m_knn}
+\CommentTok{# class tree}
+\NormalTok{p_class_tree =}\StringTok{ }\KeywordTok{predict}\NormalTok{(m_class_tree, }\DataTypeTok{newdata =}\NormalTok{ train, }\DataTypeTok{type =} \StringTok{"class"}\NormalTok{)}
+\CommentTok{# naive bayes}
+\NormalTok{p_nb =}\StringTok{ }\KeywordTok{predict}\NormalTok{(m_nb, }\DataTypeTok{newdata =}\NormalTok{ train, }\DataTypeTok{type =} \StringTok{"class"}\NormalTok{)}
+
+\NormalTok{cm_logreg =}\StringTok{ }\KeywordTok{table}\NormalTok{(}\DataTypeTok{true =}\NormalTok{ train}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{predicted =}\NormalTok{ p_logreg)}
+\NormalTok{cm_logreg}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     predicted
+## true FALSE TRUE
+##    0   711    5
+##    1    28    8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm_knn =}\StringTok{ }\KeywordTok{table}\NormalTok{(}\DataTypeTok{true =}\NormalTok{ train}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{predicted =}\NormalTok{ p_knn)}
+\NormalTok{cm_class_tree =}\StringTok{ }\KeywordTok{table}\NormalTok{(}\DataTypeTok{true =}\NormalTok{ train}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{predicted =}\NormalTok{ p_class_tree)}
+\NormalTok{cm_nb =}\StringTok{ }\KeywordTok{table}\NormalTok{(}\DataTypeTok{true =}\NormalTok{ train}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{predicted =}\NormalTok{ p_nb)}
+
+\CommentTok{# convenience function for evaluation of confusion matrix}
+\NormalTok{cm_eval =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(cm) \{}
+    \KeywordTok{list}\NormalTok{(}
+        \DataTypeTok{accur =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{diag}\NormalTok{(cm)) }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(cm),}
+        \DataTypeTok{recall =}\NormalTok{ cm[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(cm[}\DecValTok{2}\NormalTok{,]),}
+        \DataTypeTok{precision =}\NormalTok{ cm[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(cm[,}\DecValTok{2}\NormalTok{]),}
+        \DataTypeTok{F1 =} \DecValTok{2} \OperatorTok{/}\StringTok{ }\NormalTok{(}\DecValTok{1}\OperatorTok{/}\NormalTok{(cm[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(cm[}\DecValTok{2}\NormalTok{,])) }\OperatorTok{+}\StringTok{ }\DecValTok{1}\OperatorTok{/}\NormalTok{(cm[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(cm[,}\DecValTok{2}\NormalTok{])))}
+\NormalTok{    )}
+\NormalTok{\}}
+
+\KeywordTok{cm_eval}\NormalTok{(cm_logreg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $accur
+## [1] 0.956117
+## 
+## $recall
+## [1] 0.2222222
+## 
+## $precision
+## [1] 0.6153846
+## 
+## $F1
+## [1] 0.3265306
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cm_eval}\NormalTok{(cm_knn)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $accur
+## [1] 0.962766
+## 
+## $recall
+## [1] 0.6944444
+## 
+## $precision
+## [1] 0.5952381
+## 
+## $F1
+## [1] 0.6410256
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cm_eval}\NormalTok{(cm_class_tree)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $accur
+## [1] 0.9694149
+## 
+## $recall
+## [1] 0.5277778
+## 
+## $precision
+## [1] 0.76
+## 
+## $F1
+## [1] 0.6229508
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cm_eval}\NormalTok{(cm_nb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $accur
+## [1] 0.650266
+## 
+## $recall
+## [1] 0.9444444
+## 
+## $precision
+## [1] 0.1152542
+## 
+## $F1
+## [1] 0.2054381
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'caret'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:purrr':
+## 
+##     lift
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#all_features$weight}
+\NormalTok{fitControl <-}\StringTok{ }\KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method =} \StringTok{"none"}\NormalTok{)}
+
+\CommentTok{#set.seed(825)}
+\NormalTok{knnFit4 <-}\StringTok{ }\KeywordTok{train}\NormalTok{(}\KeywordTok{as.factor}\NormalTok{(unsubmitted) }\OperatorTok{~}\StringTok{ }\NormalTok{. , }\DataTypeTok{data =}\NormalTok{ train[,}\OperatorTok{!}\KeywordTok{colnames}\NormalTok{(train) }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"hash_id"}\NormalTok{,}\StringTok{"module_id"}\NormalTok{,}\StringTok{"deadline"}\NormalTok{,}\StringTok{"weight"}\NormalTok{)], }
+                 \DataTypeTok{method =} \StringTok{"knn"}\NormalTok{, }
+                 \DataTypeTok{trControl =}\NormalTok{ fitControl, }
+                 \DataTypeTok{weights =}\NormalTok{ train}\OperatorTok{$}\NormalTok{weight}
+\NormalTok{                 )}
+\NormalTok{knnFit4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## k-Nearest Neighbors 
+## 
+## 752 samples
+##  11 predictor
+##   2 classes: '0', '1' 
+## 
+## No pre-processing
+## Resampling: None
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#predict(gbmFit4, newdata = as.factor(head(test)))}
+\NormalTok{p_knn =}\StringTok{ }\KeywordTok{predict}\NormalTok{(knnFit4, }\DataTypeTok{newdata =}\NormalTok{ train)}
+\NormalTok{cm_knn =}\StringTok{ }\KeywordTok{table}\NormalTok{(}\DataTypeTok{true =}\NormalTok{ train}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{predicted =}\NormalTok{ p_knn)}
+\KeywordTok{cm_eval}\NormalTok{(cm_knn)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $accur
+## [1] 0.9547872
+## 
+## $recall
+## [1] 0.08333333
+## 
+## $precision
+## [1] 0.75
+## 
+## $F1
+## [1] 0.15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p_knn =}\StringTok{ }\KeywordTok{predict}\NormalTok{(knnFit4, }\DataTypeTok{newdata =}\NormalTok{ test)}
+\NormalTok{cm_knn =}\StringTok{ }\KeywordTok{table}\NormalTok{(}\DataTypeTok{true =}\NormalTok{ test}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{predicted =}\NormalTok{ p_knn)}
+\KeywordTok{cm_eval}\NormalTok{(cm_knn)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $accur
+## [1] 0.9088472
+## 
+## $recall
+## [1] 0.0952381
+## 
+## $precision
+## [1] 0.1176471
+## 
+## $F1
+## [1] 0.1052632
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{###############################################}
+\CommentTok{###############################################}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-6-test-your-model}{%
+\section{Step 6: Test your model}\label{step-6-test-your-model}}
+
+\emph{Question 6:} Using the model that you arrived at, predict on the
+held-out test data and report your final F1 score. Typically, you would
+only do this once at the very end, but for this project it is actually
+rather hard to do well on the test set, so you can try your model
+(sparingly to avoid overfitting too much) on the test data to compute
+the testing F1 score.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{############################################### }
+\CommentTok{####### }\RegionMarkerTok{BEGIN}\CommentTok{ INPUT: Test and report ##########}
+\CommentTok{###############################################}
+
+\CommentTok{# Make predictions on the test dataset}
+\CommentTok{# logreg: this returns the probability of dropout, so you can set Prob > 0.5 to mean Dropout}
+\CommentTok{#m_logreg = glm(unsubmitted ~ . - hash_id - module_id - deadline, data = train, family = "binomial")}
+\CommentTok{#p_logreg = predict(m_logreg, newdata = test, type = "response") > 0.5}
+\NormalTok{m_logreg =}\StringTok{ }\KeywordTok{glm}\NormalTok{(unsubmitted }\OperatorTok{~}\StringTok{ }\NormalTok{. , }\DataTypeTok{data =}\NormalTok{ train[,}\OperatorTok{!}\KeywordTok{colnames}\NormalTok{(train) }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"hash_id"}\NormalTok{,}\StringTok{"module_id"}\NormalTok{,}\StringTok{"deadline"}\NormalTok{,}\StringTok{"weight"}\NormalTok{)], }\DataTypeTok{family =} \StringTok{"binomial"}\NormalTok{)}
+\NormalTok{m_logreg}\OperatorTok{$}\NormalTok{xlevels[[}\StringTok{"module_id"}\NormalTok{]] =}\StringTok{ }\KeywordTok{union}\NormalTok{(m_logreg}\OperatorTok{$}\NormalTok{xlevels[[}\StringTok{"module_id"}\NormalTok{]], }\KeywordTok{levels}\NormalTok{(test}\OperatorTok{$}\NormalTok{module_id))}
+\NormalTok{p_logreg =}\StringTok{ }\KeywordTok{predict}\NormalTok{(m_logreg, }\DataTypeTok{newdata =}\NormalTok{ test, }\DataTypeTok{type =} \StringTok{"response"}\NormalTok{) }\OperatorTok{>}\StringTok{ }\FloatTok{0.5}
+
+\CommentTok{#}
+\CommentTok{# knn: this already has the prediction}
+\NormalTok{p_knn =}\StringTok{ }\KeywordTok{knn}\NormalTok{(train[,}\DecValTok{3}\OperatorTok{:}\NormalTok{(}\KeywordTok{ncol}\NormalTok{(train)}\OperatorTok{-}\DecValTok{3}\NormalTok{)], test[,}\DecValTok{3}\OperatorTok{:}\NormalTok{(}\KeywordTok{ncol}\NormalTok{(train)}\OperatorTok{-}\DecValTok{3}\NormalTok{)], train}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{k =} \DecValTok{5}\NormalTok{)}
+\CommentTok{# class tree}
+\NormalTok{p_class_tree =}\StringTok{ }\KeywordTok{predict}\NormalTok{(m_class_tree, }\DataTypeTok{newdata =}\NormalTok{ test, }\DataTypeTok{type =} \StringTok{"class"}\NormalTok{)}
+\CommentTok{# naive bayes}
+\NormalTok{p_nb =}\StringTok{ }\KeywordTok{predict}\NormalTok{(m_nb, }\DataTypeTok{newdata =}\NormalTok{ test, }\DataTypeTok{type =} \StringTok{"class"}\NormalTok{)}
+\CommentTok{# add code here}
+
+\CommentTok{# here is the confusion matrix for the logreg model:}
+\NormalTok{cm_logreg =}\StringTok{ }\KeywordTok{table}\NormalTok{(}\DataTypeTok{true =}\NormalTok{ test}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{predicted =}\NormalTok{ p_logreg)}
+\NormalTok{cm_knn =}\StringTok{ }\KeywordTok{table}\NormalTok{(}\DataTypeTok{true =}\NormalTok{ test}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{predicted =}\NormalTok{ p_knn)}
+\NormalTok{cm_class_tree =}\StringTok{ }\KeywordTok{table}\NormalTok{(}\DataTypeTok{true =}\NormalTok{ test}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{predicted =}\NormalTok{ p_class_tree)}
+
+\NormalTok{cm_nb =}\StringTok{ }\KeywordTok{table}\NormalTok{(}\DataTypeTok{true =}\NormalTok{ test}\OperatorTok{$}\NormalTok{unsubmitted, }\DataTypeTok{predicted =}\NormalTok{ p_nb)}
+
+\NormalTok{cm_logreg}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     predicted
+## true FALSE TRUE
+##    0   343    9
+##    1    14    7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cm_eval}\NormalTok{(cm_logreg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $accur
+## [1] 0.9383378
+## 
+## $recall
+## [1] 0.3333333
+## 
+## $precision
+## [1] 0.4375
+## 
+## $F1
+## [1] 0.3783784
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm_knn}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     predicted
+## true   0   1
+##    0 336  16
+##    1  19   2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cm_eval}\NormalTok{(cm_knn)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $accur
+## [1] 0.9061662
+## 
+## $recall
+## [1] 0.0952381
+## 
+## $precision
+## [1] 0.1111111
+## 
+## $F1
+## [1] 0.1025641
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm_class_tree}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     predicted
+## true   0   1
+##    0 343   9
+##    1  16   5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cm_eval}\NormalTok{(cm_class_tree)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $accur
+## [1] 0.9329759
+## 
+## $recall
+## [1] 0.2380952
+## 
+## $precision
+## [1] 0.3571429
+## 
+## $F1
+## [1] 0.2857143
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm_nb }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     predicted
+## true   0   1
+##    0 271  81
+##    1   4  17
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cm_eval}\NormalTok{(cm_nb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $accur
+## [1] 0.772118
+## 
+## $recall
+## [1] 0.8095238
+## 
+## $precision
+## [1] 0.1734694
+## 
+## $F1
+## [1] 0.2857143
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{###############################################}
+\CommentTok{###############################################}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-7-report}{%
+\section{Step 7: Report}\label{step-7-report}}
+
+\emph{Question 7:} As a team, write a brief report. Imagine your
+supervisor asked you to investigate the possibility of an early warning
+system. She would like to know what model to use, what features are
+important, and most importantly how well it would work. Given what
+you've learned, would you recommend implementing the system? Write your
+report answering the above questions here:
+
+\%\#\#\#\#\#\#\#\# BEGIN INPUT: Summarize findings
+\#\#\#\#\#\#\#\#\#\#\#\#
+
+In question 2, we created the outcome indicator based on
+is.na(first\_attempted\_timestamp), that is, if the students actually
+submitted the homework before the actual deadline or not since the edX
+system does not accept submissions after the deadline. There are 13
+assignments that are used for this analysis. There are two types of
+assignments: 9 of which are reading comprehension, reading reflection,
+and video reflection, which all have a possible grade of 1, and 4 of
+which are the individual and group homework with possible grades varying
+from 8 to 19 points.
+
+After testing many different factors, we included the ones with the
+highest correlation values in our model. Despite these features being
+the most important to our model compared to the many others that we
+engineered, they still had low correlation values, the highest only
+about 0.2. We learned that predicting which students will not submit an
+assignment through this system is difficult because overall, the
+possible factors have low correlation values, resulting in F1 values
+below 0.4 for the models. This is true even for the logistic regression
+model, our best performing model with an F1 score of 0.3783784.
+
+Given our results, we would in fact not recommend implementing the
+system. Our most important features included the average difference in
+time between when a student submitted and the calculated deadline, the
+number of clickstream events they generated, their average grade, how
+often on average they got a perfect score on an assignment, and whether
+or not they submitted assignments on time in the past.
+
+One possible reason that our system did not work well might be the NA
+values in the original datasets and in the features we engineered. The
+NA values in first\_attempted\_timestamp were used to determine the
+outcome variable. In some of our features, we calculated the difference
+between the deadline and first\_attempted\_timestamp, which sometimes
+resulted in NA values for those features. Some models, such as the Naive
+Bayes, are able to still make predictions even when missing attributes
+are present. Thus, the impact of missing data largely relates to the
+choice of learning algorithm. We attempted to work around this issue by
+manually changing the null values to 0 where we thought it made sense to
+do so, but this altered the fit of the models to the data. We also
+considered replacing the missing values with a ``normalized'' value
+(i.e.~mean of known values), but this would not have worked for binary
+features where we were seeing the NA values.
+
+In evaluating the obstacles we faced when creating this model, we feel
+we had a particularly difficult time relating the data back to the
+corresponding due dates. Particularly because we had no basis on which
+events were related to which assignment, we were making these
+classifications purely based on due date (which was an assumed value)
+and the timestamp of the event. While these methods were useful, future
+models may be more successful with more clear data relating to the due
+date and the relevant events to each assignment.
+
+While creating the models, we made some other observations we believe
+may be helpful if someone were to look into designing a similar system
+in the future. When we generated the percentage of unsubmitted
+assignments for each module we noticed one assignment, the only video
+reflection assignment, has the highest percentage of being unsubmitted
+relative to other assignments. Upon examining it more closely, we
+concluded that this might be because this assignment was due on a Friday
+followed by the first group project, an unusual time that students might
+forget. It is possible that our model is less effective because unique
+circumstances such as this may be influencing why a student doesn't
+submit more often, as opposed to other more predictable situations such
+as a student consistently struggling in the course.
+
+\%\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+\hypertarget{submit-project}{%
+\section{Submit Project}\label{submit-project}}
+
+This is the end of the project. Please \textbf{Knit a Word doc report}
+that shows both the R code and R output and upload it on the EdX
+platform. EACH TEAM MEMBER NEEDS TO SUBMIT THE REPORT ON EDX TO GET
+CREDIT.
+
+\end{document}
